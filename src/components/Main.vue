@@ -5,7 +5,7 @@
 </template>
 <script>
   export default{
-      name : 'componentb'
+      name : 'main-vue'
   }
 </script>
 <style></style>

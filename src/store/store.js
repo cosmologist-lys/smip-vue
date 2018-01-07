@@ -5,7 +5,10 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state:{
-    isLogin : false
+    isLogin : {
+      type:Boolean,
+      default:false
+    }
   },
   getters:{
     getLoginStatus(state){
