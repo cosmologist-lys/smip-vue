@@ -1,10 +1,8 @@
 import Vue from 'vue'
 import App from './App'
-import store from './store/store'
-import iView from 'iview';
+import store from './store/entry'
 import 'N3-components/dist/index.min.css'
 
-Vue.use(iView);
 Vue.config.productionTip = false
 
 
