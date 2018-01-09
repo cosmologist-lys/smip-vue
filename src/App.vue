@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <button @click="clickLogin">login</button>
     <LoginV v-if="flg"></LoginV>
     <MainV v-else></MainV>
   </div>
@@ -9,27 +8,13 @@
 <script type="es6">
   import LoginV from './components/Login/Login.vue'
   import MainV from './components/Main/Main.vue'
+  import http from './api/http'
   export default {
     name: 'app',
     computed: {
       flg(){
         console.log(this.$store.getters.getLogin)
         return !this.$store.getters.getLogin;
-      }
-    },
-    methods: {
-      clickLogin(){
-        const commit = this.$store.dispatch;
-        const sysuser = {
-          username : 'admin',
-          psw : '666666'
-        };
-        const respdata = this.$http.get('/users/login', null, sysuser, null);
-        console.log(respdata)
-        /*commit('loginApi')
-          .then(flg => {
-            commit('setLoginStatus', flg)
-          })*/
       }
     },
     components: {LoginV, MainV}

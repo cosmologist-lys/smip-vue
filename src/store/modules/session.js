@@ -1,31 +1,55 @@
 /**
  * session.vuex
  * 状态相关
+ * 用localstorage存储
  **/
 
 
 const md5 = require('crypto').createHash('md5');
 import * as types from '../mutation-types';
+import * as localStore from '@/handler/LocalStore.js';
+import * as kitbox from '@/handler/kitbox.js';
+const key = 'sess';
+
+/**
+ * session.state构成如下：
+ *    sesshash:sessionid 的哈希值
+ *    sessuser:当前用户信息
+ *    sesstoken:请求成功之后返回的token,之后每次请求都要携带
+ *    islogin:是否登陆标识，用来跳转App.vue里面的vue,main两个模块
+ *    loginstatus:登陆之后的状态信息，用来login.vue界面提示错误
+ * @type {{sesshash: string, sessuser: {}, sesstoken: string, isLogin: boolean, loginStatus: string}}
+ */
 
 const state = {
   sesshash: '',
   sessuser: {},
   sesstoken: '',
-  isLogin: false
+  isLogin: false,
+  loginStatus: ''
 };
 
 const getters = {
   getSesshas (state){
-    return state.sesshash
+    return kitbox.notEmpty(state.sesshash) ?
+      state.sesshash : localStore.get(key).sesshash
+
   },
   getSessuser(state){
-    return state.sessuser;
+    return kitbox.notEmpty(state.sessuser) ?
+      state.sessuser : localStore.get(key).sessuser
   },
   getSesstoken(state){
-    return state.sesstoken
+    return kitbox.notEmpty(state.sesstoken) ?
+      state.sesstoken : localStore.get(key).sesstoken
   },
   getLogin(state){
-    return state.isLogin
+    return (localStore.get(key).isLogin) ?
+      localStore.get(key).isLogin : state.isLogin
+  },
+  getLoginStatus(state){
+    return kitbox.notEmpty(state.loginStatus) ?
+      state.loginStatus : localStore.get(key).loginStatus
   }
 };
 
@@ -55,10 +79,15 @@ const mutations = {
       state.sesstoken = obj.sesstoken;
       state.sessuser = obj.sessuser;
       state.isLogin = obj.isLogin;
+      state.loginStatus = obj.loginStatus
+      localStore.set(key, state)
     }
   },
-  [types.SET_SESSION_LOGINSTATUS](state, judge){
+  [types.SET_SESSION_LOGINFLAG](state, judge){
     state.isLogin = judge
+  },
+  [types.SET_SESSION_LOGINSTATUS](state, status){
+    state.loginStatus = status.toString()
   }
 };
 
@@ -73,12 +102,16 @@ const actions = {
     commit(types.SET_SESSION_TOKEN, value)
   },
   setLoginStatus({commit}, value){
-    commit(types.SET_SESSION_LOGINSTATUS, value)
+    commit(types.SET_SESSION_LOGINFLAG, value)
   },
-  loginApi(obj){
-    return true
+  setFailLogin({commit}, status){
+    commit(types.SET_SESSION_LOGINSTATUS, status)
+  },
+  loginApi({commit}, obj){
+    commit(types.SET_SESSION, obj)
   }
 };
+
 
 export default {
   state,
