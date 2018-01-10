@@ -12,12 +12,12 @@ import * as kitbox from '@/handler/kitbox.js';
 const key = 'sess';
 
 /**
- * session.state构成如下：
- *    sesshash:sessionid 的哈希值
- *    sessuser:当前用户信息
- *    sesstoken:请求成功之后返回的token,之后每次请求都要携带
- *    islogin:是否登陆标识，用来跳转App.vue里面的vue,main两个模块
- *    loginstatus:登陆之后的状态信息，用来login.vue界面提示错误
+ * session.state构成：
+ *    sesshash:sessionid 的哈希值 string
+ *    sessuser:当前用户信息 json
+ *    sesstoken:请求成功之后返回的token,之后每次请求都要携带 string
+ *    islogin:是否登陆标识，用来跳转App.vue里面的vue,main两个模块 boolean
+ *    loginstatus:登陆之后的状态信息，用来login.vue界面提示错误 string
  * @type {{sesshash: string, sessuser: {}, sesstoken: string, isLogin: boolean, loginStatus: string}}
  */
 
@@ -44,7 +44,7 @@ const getters = {
       state.sesstoken : localStore.get(key).sesstoken
   },
   getLogin(state){
-    return (localStore.get(key).isLogin) ?
+    return kitbox.notEmpty(localStore.get(key))?
       localStore.get(key).isLogin : state.isLogin
   },
   getLoginStatus(state){
@@ -79,9 +79,16 @@ const mutations = {
       state.sesstoken = obj.sesstoken;
       state.sessuser = obj.sessuser;
       state.isLogin = obj.isLogin;
-      state.loginStatus = obj.loginStatus
+      state.loginStatus = obj.loginStatus;
       localStore.set(key, state)
     }
+  },
+  [types.INIT_SESSION](state){
+    state.sesshash = ''
+    state.sesstoken = ''
+    state.sessuser = {}
+    state.isLogin = false
+    state.loginStatus = ''
   },
   [types.SET_SESSION_LOGINFLAG](state, judge){
     state.isLogin = judge
@@ -109,6 +116,9 @@ const actions = {
   },
   loginApi({commit}, obj){
     commit(types.SET_SESSION, obj)
+  },
+  initSessions({commit}){
+    commit(types.INIT_SESSION);
   }
 };
 

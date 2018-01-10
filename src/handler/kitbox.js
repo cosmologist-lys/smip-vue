@@ -1,4 +1,4 @@
-export const notEmpty = obj =>{
+export const notEmpty = obj => {
   if (obj === null || obj === undefined)
     return false;
   if (typeof obj === 'object')

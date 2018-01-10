@@ -1,13 +1,16 @@
 import axios from 'axios';
 import qs from 'qs'
 
-axios.defaults.baseURL = 'http://localhost:3100';
+import * as api from './apis'
+
+axios.defaults.baseURL = api.BASEURL || 'http://localhost:3100';
 axios.defaults.timeout = 5000;
 
 
 axios.interceptors.request.use(
   config => {
     console.log('axios start')
+    //todo : this place can do sth before axios
     return config
   },
   err => {
@@ -18,6 +21,7 @@ axios.interceptors.request.use(
 axios.interceptors.response.use(
   response => {
     console.info('axios end')
+    //todo : this place can do sth after axios
     return response
   },
   err => {
@@ -50,19 +54,18 @@ export default {
       method: 'post',
       url,
       data: qs.stringify(data),//post用data传送数据
-      timeout: 5000,
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
         'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
         '_token': token
       }
     }).then(
-      (response) => {
+      response => {
         return checkStatus(response)
       }
     ).then(
-      (res) => {
-        return checkCode(res)
+      response => {
+        return checkCode(response)
       }
     )
   },
@@ -71,7 +74,6 @@ export default {
       method: 'get',
       url,
       params, // get用params传送url拼接的数据
-      timeout: 5000,
       headers: {
         'X-Requested-With': 'XMLHttpRequest',
         'username': sysuser.username,
@@ -79,12 +81,12 @@ export default {
         '_token': sysuser._token
       }
     }).then(
-      (response) => {
+      response => {
         return checkStatus(response)
       }
     ).then(
-      (res) => {
-        return checkCode(res)
+      response => {
+        return checkCode(response)
       }
     )
   }
