@@ -5,7 +5,7 @@
             style="width: 100%;background: whitesmoke"
             mode="horizontal">
       <n3-sub-nav index="1">
-        <template slot="title"><n3-icon type="asterisk"/>sub nav 1</template>
+        <template slot="title"><n3-icon type="asterisk"/><router-link to="/company">sub nav 1</router-link></template>
         <n3-nav-item index="1-1"><n3-icon type="asterisk"/>1-1</n3-nav-item>
         <n3-nav-item index="1-2"><n3-icon type="asterisk"/>1-3</n3-nav-item>
         <n3-nav-item index="1-3"><n3-icon type="asterisk"/>1-4</n3-nav-item>
