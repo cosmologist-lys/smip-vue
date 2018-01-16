@@ -9,9 +9,6 @@
         </UiSnackbar>
       </div>
     </div>
-    <div class="line-under-blank">
-
-    </div>
   </div>
 </template>
 <script type="text/ecmascript-6">

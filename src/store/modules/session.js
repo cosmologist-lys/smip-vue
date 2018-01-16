@@ -16,7 +16,7 @@ const key = 'sess';
  *    sesshash:sessionid 的哈希值 string
  *    sessuser:当前用户信息 json
  *    sesstoken:请求成功之后返回的token,之后每次请求都要携带 string
- *    islogin:是否登陆标识，用来跳转App.vue里面的vue,main两个模块 boolean
+ *    islogin:是否登陆标识
  *    loginstatus:登陆之后的状态信息，用来login.vue界面提示错误 string
  * @type {{sesshash: string, sessuser: {}, sesstoken: string, isLogin: boolean, loginStatus: string}}
  */

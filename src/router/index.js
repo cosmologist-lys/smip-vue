@@ -27,7 +27,7 @@ const clearSessStore = () => {
 }
 
 router.beforeEach((to, from, next) => {
-  const isLogin = store.getters.getLogin;
+  /*const isLogin = store.getters.getLogin;
   const status = store.getters.getLoginStatus;
   console.log('islogin=', isLogin, 'status=', status)
   console.info(to.path)
@@ -42,7 +42,9 @@ router.beforeEach((to, from, next) => {
     } else {
       next({path: '/login'})
     }
-  }
+  }*/
+  console.log('to',to.path)
+  next()
 });
 
 export default router;

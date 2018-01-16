@@ -1,6 +1,6 @@
 import Home from '@/components/Main/Main'
 import Login from '@/components/Login/Login'
-import home_router_part from './home-parts/companyRouter'
+import home_children from './home_children'
 
 /**
  * home.router集合。汇总所有'/home'路径下的路由，也是本项目的主要路由
@@ -17,13 +17,13 @@ const loginRouter = {
 const home_redirect = {
   path: '/',
   redirect: '/home',
-  component : Home
+  component: Home
 }
 
 const homeRouter = {
   path: '/home',
   component: Home,
-  //children: [home_router_part]
+  children: home_children
 };
 const routes = [loginRouter, homeRouter, home_redirect];
 
