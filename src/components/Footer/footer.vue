@@ -14,8 +14,7 @@
 </script>
 <style scoped>
   .sv-footer{
-    display: flex;
-    justify-content: center;
+    position: fixed;
     margin-bottom: 0px;
     padding-bottom: 0px;
     height: 50px;

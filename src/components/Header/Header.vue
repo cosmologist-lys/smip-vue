@@ -37,7 +37,7 @@
 <style scoped>
   .blank{
     display: flex;
-    background: cadetblue;
+    background: #409EFF;
     justify-content: space-between;
     position:fixed; z-index:999; top:0;
     padding: 0px;
@@ -57,12 +57,5 @@
     height: 100%;
     margin-right: 130px;
     margin-top: 18px;
-  }
-  .line-under-blank{
-    margin-top: 18px;
-    z-index: 999;
-    position: fixed;
-    width: 100%;
-    border:solid 2px antiquewhite;
   }
 </style>

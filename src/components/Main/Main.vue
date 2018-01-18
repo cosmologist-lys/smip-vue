@@ -2,9 +2,7 @@
   <div>
     <HeaderV></HeaderV>
     <NavierV></NavierV>
-    <BodyV>
-    </BodyV>
-    <FooterV></FooterV>
+    <BodyV></BodyV>
   </div>
 </template>
 <script>
@@ -14,6 +12,7 @@
   import NavierV from '../Navier/Navier.vue';
   import FooterV from '../Footer/Footer.vue';
   import BodyV from '../Body/Body.vue';
+
 
   export default{
     name: 'main-vue',

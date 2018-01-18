@@ -2,7 +2,7 @@
   <div>
     <div class="sv-navier">
       <n3-nav theme="light" :uniqueOpened="uniqueOpenedFlg" menu-trigger="hover"
-              style="width: 100%;background: whitesmoke"
+              style="width: 100%;background: #EBEEF5"
               mode="horizontal">
         <n3-sub-nav index="1">
           <template slot="title">

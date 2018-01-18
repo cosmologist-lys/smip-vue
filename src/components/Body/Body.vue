@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div id="sv-body">
+    <div class="body-top-blank"></div>
+    <div class="sv-body">
       <router-view></router-view>
     </div>
   </div>
@@ -9,12 +10,16 @@
 
 </script>
 <style scoped>
-  #sv-body {
-    margin-top: 140px; /*header,navier是Z轴999，拉开距离*/
-    /*height: 80%;*/
-    height: 600px;;
+  .body-top-blank{
+    height: 80px;
+    margin:0; padding: 0;
+    border: solid black;
+  }
+  .sv-body {
+    height: 85%;
     width: 100%;
     background: rgb(250,250,250);
-    //border: solid red;
+    border: solid red;
+    position: fixed;
   }
 </style>
