@@ -1,7 +1,5 @@
 <template>
   <div id="app">
-    <!--<HomeV></HomeV>-->
-    <!--<LoginV></LoginV>-->
     <router-view/>
   </div>
 </template>

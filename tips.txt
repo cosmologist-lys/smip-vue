@@ -1,0 +1,21 @@
+垂直居中：
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: solid #409EFF 2px;
+
+后台cors设置了跨域验证，只允许127.0.0.1:3000端口访问，如果请求超时一定是这个原因
+后台validation验证用户信息之后会返回token，之后的访问一定要携带他。因为返回token之后后台会记录此用户已登陆，不再接收该用户直接
+用户名+密码的形式访问。
+前台logout到时候清空vuex和localstorage,并且给后台发送请求，后台清空guava,并且expire session
+前台不做session expire time，交给后台。
+如果携带token的访问没有成功，则代表后台已经expire，前台此时重新登陆
+
+router的结构根据aside-navi来划分。
+主路由根节点为 /login和/home。其他的路由都在/home之下
+  /login
+  /home  ->
+            company -> area
+                       card
+
+灵活用slot：它表示占位。可以被使用时传入另一个VUE模板来填充

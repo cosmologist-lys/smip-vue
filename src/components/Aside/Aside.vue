@@ -13,8 +13,8 @@
         </template>
         <el-submenu index="1-1">
           <template slot="title">公司信息</template>
-          <el-menu-item index="1-1-1">公司名片</el-menu-item>
-          <el-menu-item index="1-1-2">区域划分</el-menu-item>
+          <router-link :to="companycard_path"><el-menu-item index="1-1-1">公司名片</el-menu-item></router-link>
+          <router-link :to="area_path"><el-menu-item index="1-1-2">区域划分</el-menu-item></router-link>
           <el-menu-item index="1-1-3">片区划分</el-menu-item>
           <el-menu-item index="1-1-4">小区划分</el-menu-item>
         </el-submenu>
@@ -48,6 +48,12 @@
 
   export default{
     name: 'sv-aside',
+    data(){
+    	return {
+    		companycard_path :  {path: '/home/company/card'},
+        area_path : {path: '/home/company/area'}
+      }
+    },
     methods: {
       handleOpen(key, keyPath) {
         console.log(key, keyPath);

@@ -1,10 +1,16 @@
 <template>
   <el-container>
-    <el-header height="80px"><HeadV></HeadV></el-header>
+    <el-header height="80px">
+      <HeadV></HeadV>
+    </el-header>
     <el-container>
-      <el-aside><AsideV></AsideV></el-aside>
+      <el-aside>
+        <AsideV></AsideV>
+      </el-aside>
       <el-container>
-        <el-main>Main</el-main>
+        <el-main>
+            <router-view/>
+        </el-main>
         <el-footer>Footer</el-footer>
       </el-container>
     </el-container>
@@ -25,13 +31,14 @@
 
 </script>
 <style>
-  .el-header{
+  .el-header {
     background-color: #409EFF;
     color: #333;
     text-align: center;
     line-height: 60px;
 
   }
+
   .el-footer {
     background-color: #B3C0D1;
     color: #333;
