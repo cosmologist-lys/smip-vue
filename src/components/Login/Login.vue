@@ -1,12 +1,11 @@
 <template>
-  <div class="outterDiv">
-    <h3>Login vue</h3>
-    <div class="login-form">
+  <div class="backgrndimg">
+    <img :src="backimg">
+    <div class="login">
       <div class="logo-div">
-        <img :src="LogoImg">
+        <img :src="Logo">
       </div>
       <div class="usernameDiv">
-
         <h4>username</h4>
         <n3-input v-model="username" ref="input" icon="user" placeholder="account name"></n3-input>
       </div>
@@ -22,26 +21,29 @@
         <n3-button @click.native="login" type="primary" size="lg">submit</n3-button>
       </div>
     </div>
+
   </div>
 </template>
-<script>
-  import {UiTextbox, UiButton} from 'keen-ui'
-
-
+<script type="text/ecmascript-6">
+  import Backimg from '@/assets/img/cosmos.jpg'
+  import LOGO from '@/assets/img/QKROM.png'
   import Button from 'N3-components'
   import Input from 'N3-components'
-  import LogoImg from '@/assets/img/QKROM.png'
-  import cosmogImg from '@/assets/img/cosmos.jpg'
   import * as loginJs from './LoginJs'
   const n3Button = Button.n3Button,
     n3Input = Input.n3Input;
   export default{
-    name: 'Login-vue',
-    components: {n3Button, n3Input, UiTextbox, UiButton},
+  	name : 'sv-login',
     data(){
-      return {
-        maxlength : 30
+  		return {
+  			backimg :Backimg,
+        Logo : LOGO,
+        username : '',
+        password: '',
       }
+    },
+    components:{
+      n3Button,n3Input
     },
     computed: {
       isErr(){
@@ -56,13 +58,6 @@
         return false
       }
     },
-    data(){
-      return {
-        username: '',
-        password: '',
-        LogoImg: LogoImg
-      }
-    },
     methods: {
       login(){
         const commit = this.$store.dispatch;
@@ -74,22 +69,27 @@
       }
     },
   }
+
 </script>
-
-<style>
-  .outterDiv {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
+<style scoped>
+  .backgrndimg{
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
   }
-
-  .login-form {
-    margin: 0 auto;
-    height: 500px;
-    width: 400px;
-    border: solid 0.5px cadetblue;
+  .login{
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    border: solid #409EFF 2px;
+    height: 50%;width: 30%;
     border-radius: 10px;
+    background: whitesmoke;
+  }
+  .logo-div{
+    border-radius: 10px;
+    background: #409EFF;
+    height: 80px;
   }
 
   .usernameDiv {
@@ -100,18 +100,7 @@
     margin-top: 30px;
   }
 
-  .logo-div {
-    border-radius: 10px;
-    background: cadetblue;
-    height: 80px;
-  }
-
   .notErr {
     text-align: center;
-  }
-
-  .errTips {
-    margin-top: 20px;
-    height: 25px;
   }
 </style>

@@ -1,61 +1,68 @@
 <template>
-  <div id="top">
-    <div class="blank">
-      <div class="blank-left-img">
-        <img :src="LogoImg">
-      </div>
-      <div class="blank-right-usertag">
-        <UiSnackbar message="UiSnackbar" action="logout" actionColor="accent" transition="slide" @action-click="logout">popover
-        </UiSnackbar>
-      </div>
+  <div class="header-blank">
+    <div class="head-left-logo">
+      <img :src="logoImg">
+    </div>
+    <div class="head-right-icon">
+      <el-dropdown split-button type="default">
+        <n3-icon type="user">&nbsp</n3-icon>username
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item debided><span @click="logout">Logout</span></el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import logoImg from '@/assets/img/QKROM.png'
-
-  import {UiPopover,UiSnackbar} from 'keen-ui'
-
+  import LOGO from '@/assets/img/QKROM.png'
+  import Icon from 'N3-components'
+  const n3Icon = Icon.n3Icon
   export default{
-    name : 'Header',
+    name: 'sv-header',
     data(){
-    	return{
-    		LogoImg : logoImg
+      return {
+        logoImg: LOGO
       }
     },
-    components:{
-    	UiPopover,UiSnackbar
-    },
-    methods:{
+    components: {n3Icon},
+    methods: {
       logout(){
-    			console.log('logout')
-        //TODO this place do logout actions
-      }
+      	//TODO
+        console.log('logout')
+      },
     }
   }
 </script>
 <style scoped>
-  .blank{
+  .header-blank {
     display: flex;
-    background: #409EFF;
     justify-content: space-between;
-    position:fixed; z-index:999; top:0;
-    padding: 0px;
-    width:100%;
-    height: 10%;
-    margin-top: 0px;
-    //border:solid;
   }
-  .blank-left-img{
-    margin-left: 100px;
-    width: 300px;
-    height: 100%;
-    //border: solid steelblue;
+
+  .head-left-logo {
+    margin-left: -10px;
   }
-  .blank-right-usertag{
-    width: 200px;
-    height: 100%;
-    margin-right: 130px;
-    margin-top: 18px;
+
+  .head-right-icon {
+    height: 39px;
+    width: 250px;
+    margin-top: 1%;
+  }
+
+  img {
+    vertical-align: top;
+    margin-left: 30px;
+  }
+
+  .el-dropdown {
+    vertical-align: top;
+  }
+
+  .el-dropdown + .el-dropdown {
+    margin-left: 15px;
+  }
+
+  .el-icon-arrow-down {
+    font-size: 12px;
   }
 </style>

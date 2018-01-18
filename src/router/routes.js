@@ -1,5 +1,5 @@
-import Home from '@/components/Main/Main'
-import Login from '@/components/Login/Login'
+import Home from '@/components/Home/Home'
+import Login from '@/components/Login/Login.vue'
 import home_children from './home_children'
 
 /**

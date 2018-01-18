@@ -1,26 +1,26 @@
-import CompanyV from '@/components/Constructor/Company/Company'
-import CompanyEditV from '@/components/Constructor/Company/CompanyEdit'
+import Companycard from '@/components/Base/Company-sets/CompanyCard'
+import Area from '@/components/Base/Company-sets/Area'
 
 /**
  * company.routes
  * @type {{path: string, component}}
  */
 
-const info = {
-  path: 'company/info',
-  component: CompanyV
+const card = {
+  path: 'company/card',
+  component: Companycard
 }
 
-const edit = {
-  path: 'company/edit',
-  component: CompanyEditV
+const area = {
+  path: 'company/area',
+  component: Area
 }
 
 const redirect = {
   path: 'company',
-  redirect: 'company/info'
+  redirect: 'company/card'
 }
 
 export default {
-  info, edit, redirect
+  card, area, redirect
 }

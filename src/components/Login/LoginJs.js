@@ -1,5 +1,5 @@
 import http from '@/api/http';
-const api = require('@/api/apis');
+import api from '@/api/apis.js'
 import router from '@/router/index.js'
 
 export const login = (user, commit) => {
@@ -26,7 +26,7 @@ export const login = (user, commit) => {
         }
         console.info(validUser)
         commit('loginApi', validUser);
-        $router.push({path : '/home'})//登陆成功跳转到home
+       $router.push({path : '/home'})//登陆成功跳转到home
       } else {
         //登陆失败
         const validUser = {
