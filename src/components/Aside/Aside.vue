@@ -1,6 +1,6 @@
 <template>
   <div class="aside-nav">
-    <el-menu
+    <!--<el-menu
       default-active="2"
       class="el-menu-vertical-demo"
       @open="handleOpen"
@@ -13,10 +13,7 @@
         </template>
         <el-submenu index="1-1">
           <template slot="title">公司信息</template>
-          <router-link :to="companycard_path"><el-menu-item index="1-1-1">公司名片</el-menu-item></router-link>
-          <router-link :to="area_path"><el-menu-item index="1-1-2">区域划分</el-menu-item></router-link>
-          <el-menu-item index="1-1-3">片区划分</el-menu-item>
-          <el-menu-item index="1-1-4">小区划分</el-menu-item>
+          <Menuitem :items="items_1"></Menuitem>
         </el-submenu>
         <el-submenu index="1-2">
           <template slot="title">规则设置</template>
@@ -26,41 +23,24 @@
           <el-menu-item index="1-2-5">气费设置</el-menu-item>
           <el-menu-item index="1-2-6">阶梯收费</el-menu-item>
         </el-submenu>
-        <!--<el-menu-item-group>
-          <template slot="title">分组一</template>
-          <el-menu-item index="1-1">选项1</el-menu-item>
-          <el-menu-item index="1-2">选项2</el-menu-item>
-        </el-menu-item-group>
-        <el-menu-item-group title="分组2">
-          <el-menu-item index="1-3">选项3</el-menu-item>
-        </el-menu-item-group>
-        <el-submenu index="1-4">
-          <template slot="title">选项4</template>
-          <el-menu-item index="1-4-1">选项1</el-menu-item>
-        </el-submenu>-->
       </el-submenu>
-
-
-    </el-menu>
+    </el-menu>-->
+    <MenuV :menus="menus"></MenuV>
   </div>
 </template>
 <script type="text/ecmascript-6">
-
+  import MenuV from '@/components/Kits/Menu'
+  import menu from '@/menu/primary/primary'
   export default{
     name: 'sv-aside',
     data(){
     	return {
-    		companycard_path :  {path: '/home/company/card'},
-        area_path : {path: '/home/company/area'}
+    		menus : menu
       }
     },
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath);
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath);
-      }
+    components : {MenuV},
+    created(){
+    	console.info(this.menus instanceof Array)
     }
   }
 </script>

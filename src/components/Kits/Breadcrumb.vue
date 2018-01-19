@@ -1,5 +1,5 @@
 <template>
-  <el-breadcrumb separator="/" style="height: 30px;font-size: 18px;margin-left: 20px;margin-top: 10px">
+  <el-breadcrumb :separator="separator" style="height: 30px;font-size: 18px;margin-left: 20px;margin-top: 10px">
         <el-breadcrumb-item  v-for="item in items" :key="item.id" :to="item.path">
           {{item.text}}
         </el-breadcrumb-item>
@@ -17,6 +17,8 @@
       	type : Array,
         require : true
       }
+    },
+    created(){
     }
   }
 
