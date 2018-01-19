@@ -19,3 +19,10 @@ router的结构根据aside-navi来划分。
                        card
 
 灵活用slot：它表示占位。可以被使用时传入另一个VUE模板来填充
+
+封装了menu。src/menu里对应左边菜单选项
+  primary一级菜单-> 1   -> secondary二级菜单   1   -> tietiary 三级菜单   1
+                   2                          2                          2
+                   3                          3                          3
+                  ...                        ...                         ...
+  封装了src/components/Kits/Menu,Menuitem对象
