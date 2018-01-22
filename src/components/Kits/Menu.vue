@@ -14,7 +14,7 @@
           <template slot="title">{{secondary.title}}</template>
           <router-link v-for="tietiary in secondary.items"
                        :key="tietiary.id" :to="tietiary.path"
-                       @hover="changeColor">
+                       @mouseenter="enter" @mouseleave="leave">
             <el-menu-item :index="tietiary.index">
               {{tietiary.title}}
             </el-menu-item>
@@ -36,13 +36,16 @@
     components: {},
     methods: {
       handleOpen(key, keyPath) {
-        console.log(key, keyPath);
+        //console.log(key, keyPath);
       },
       handleClose(key, keyPath) {
-        console.log(key, keyPath);
+        //console.log(key, keyPath);
       },
-      changeColor(){
-        console.info('mouse enter')
+      enter(){
+      	console.info('enter')
+      },
+      leave(){
+      	console.info('leave')
       }
     },
     created(){

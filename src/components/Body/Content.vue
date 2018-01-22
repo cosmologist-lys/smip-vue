@@ -13,7 +13,7 @@
     height: 100%;
     width: 100%;
     background: #F2F6FC;
-    display: flex;
-    flex-direction:column
+    /*display: flex;
+    flex-direction:column*/
   }
 </style>

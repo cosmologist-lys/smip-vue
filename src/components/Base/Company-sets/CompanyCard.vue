@@ -3,7 +3,7 @@
     <KitBreadcrumV :items="items"></KitBreadcrumV>
     <InnerContentV :hasBorder="false">
       <div class="company-card-content">
-        <el-form ref="companyform" :model="companyform" label-width="100px">
+        <el-form ref="companyform" :model="companyform" label-width="100px" labelPosition="left">
           <el-form-item label="公司名称" prop="name">
             <el-input v-model="companyform.name"></el-input>
           </el-form-item>
@@ -84,9 +84,10 @@
 </script>
 <style scoped>
   .company-card-content {
+    margin-top: 50px;
     height: 100%;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: center;
   }
 </style>
