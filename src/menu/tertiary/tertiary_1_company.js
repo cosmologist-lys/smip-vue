@@ -8,13 +8,19 @@ export default [
     txt: '',
     path: {path: '/home/company/card'},
     router: routers.card
-  },
-  {
+  }, {
     id: 2,
     title : '区域划分',
     index: '1-1-2',
     txt: '',
     path: {path: '/home/company/area'},
     router: routers.area
+  },{
+    id: 3,
+    title : '小区划分',
+    index: '1-1-3',
+    txt: '',
+    path: {path: '/home/company/community'},
+    router: routers.community
   }
 ]

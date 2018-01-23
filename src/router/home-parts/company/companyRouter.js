@@ -1,5 +1,6 @@
-import Companycard from '@/components/Base/Company-sets/CompanyCard'
-import Area from '@/components/Base/Company-sets/Area'
+import Companycard from '@/components/Base/Company-sets/Card/CompanyCard'
+import Area from '@/components/Base/Company-sets/Area/Area'
+import Community from '@/components/Base/Company-sets/Community/Community'
 
 /**
  * company.routes
@@ -16,11 +17,16 @@ const area = {
   component: Area
 }
 
+const community = {
+  path : 'company/community',
+  component : Community
+}
+
 const redirect = {
   path: 'company',
   redirect: 'company/card'
 }
 
 export default {
-  card, area, redirect
+  card, area, redirect , community
 }

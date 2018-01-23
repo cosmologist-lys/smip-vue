@@ -26,3 +26,18 @@ router的结构根据aside-navi来划分。
                    3                          3                          3
                   ...                        ...                         ...
   封装了src/components/Kits/Menu,Menuitem对象
+
+
+
+el-table的用法：
+        :data="tableData"  对应的数据数组
+        @selection-change="udpateSelections"  对应的checkbox点击时触发的事件
+        <el-table-column align="center" type="selection"  设置这一行是一个checkbox
+        在‘操作’这个项目里两个BUTTON，分别对应 编辑 和 删除。并且分配对应事件，这里注意2个问题
+        1.编辑时候，form会传入一个dialog，在这个dialog里要用另一个formcopy来拷贝当初传入时的form，因为这个dialog里绑定的对象
+        实际上就是外层的form。在编辑取消的时候表示并没有修改这个form对象，要把开始拷贝的formcopy返回给这个form
+        2.删除的时候，要先确保已经删除（后台），然后再从这个data里删除这个数据。或者后台直接返回最新数组
+        翻页思路：后台给2个array数组。1个是当前显示的数组（默认第一页），另1个是总array。翻页的时候第一个array重新赋值
+
+
+

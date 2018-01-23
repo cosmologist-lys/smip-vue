@@ -26,6 +26,8 @@
   </el-dialog>
 </template>
 <script type="text/ecmascript-6">
+  import * as kits from '@/handler/kitbox.js'
+
   export default{
     name: 'sv-area-dialog',
     props: {
@@ -41,18 +43,25 @@
     },
     data(){
       return {
+      	index : 0,
+        formCopy : {},
         formLabelWidth: '120px'
       }
     },
     methods: {
       submitDialog(){
         console.log('dialog submit')
-        //todo 提交post
+        //todo 提交post,并且返回更新后的form this.$emit('changeVisible',this.form,this.index)
       },
       closeDialog(){
-        this.$emit('changeVisible', false)
-      }
-    }
+        this.$emit('changeVisible', this.formCopy,this.index)
+      },
+      initCopy(val,index){
+      	this.index = index;
+      	this.formCopy = kits.deepCopy(val)
+      },
+    },
+
   }
 
 </script>

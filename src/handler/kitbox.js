@@ -58,3 +58,16 @@ export const reg = (type, value) => {
   }
   return reg.test(value)
 };
+/**
+ * 深拷贝。得到2个内存地址。
+ * 直接复制的方式始终只有1个内存地址
+ * @param source
+ * @returns {{}}
+ */
+export const deepCopy = (source)=> {
+  let result={};
+  for (let key in source) {
+    result[key] = typeof source[key]=== 'object' ? deepCopy(source[key]): source[key];
+  }
+  return result;
+};

@@ -27,17 +27,20 @@
           <template slot-scope="scope">
             <AreaDialog :form="form_row"
                         :visible='visible'
-                        @changeVisible="changeVisible"></AreaDialog>
+                        @changeVisible="changeVisible"
+                        ref="area_dialog"></AreaDialog>
             <el-button
               type="default"
               size="mini"
               round
+              icon="el-icon-edit"
               @click="handleEdit(scope.$index, scope.row)">编辑
             </el-button>
             <el-button
               size="mini"
               type="danger"
               round
+              icon="el-icon-close"
               @click="handleDeleteOne(scope.$index, scope.row)">删除
             </el-button>
           </template>
@@ -45,10 +48,12 @@
       </el-table>
       <el-button
         type="primary" round
+        icon="el-icon-circle-plus-outline"
         @click="handleAdd()">新增
       </el-button>
       <el-button
         type="danger" round
+        icon="el-icon-close"
         @click="handleDeleteSelected()">删除所选
       </el-button>
     </InnerContentV>
@@ -70,7 +75,7 @@
       },
       handleDeleteSelected(){//删除所选
         console.info('delete all', this.selectedArr)
-        if (this.selectedArr.length > 0){
+        if (this.selectedArr.length > 0) {
           this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
             confirmButtonText: '确定',
             cancelButtonText: '取消',
@@ -92,11 +97,12 @@
             });
           });
         }
+        //this.selectedArr = []
       },
       handleEdit(index, row) {//编辑一项
         this.visible = true;
         this.form_row = row;
-        console.log(index, this.visible);
+        this.$refs.area_dialog.initCopy(row, index);
       },
       handleDeleteOne(index, row) {//删除一项
         this.$confirm('此操作将永久删除该文件, 是否继续?', '提示', {
@@ -117,12 +123,16 @@
           });
         });
       },
-      changeVisible(flg){//子组件emit触发父组件改变props
-        this.visible = flg
+      changeVisible(val, index){//子组件emit触发父组件改变props隐藏dialog，并且form取消修改
+        if (val && val instanceof Object) {
+          this.form_row = val;
+          this.tableData[index] = val
+        }
+        this.visible = false
       },
       udpateSelections(val){
         this.selectedArr = val;
-      }
+      },
     },
     data() {
       return {
