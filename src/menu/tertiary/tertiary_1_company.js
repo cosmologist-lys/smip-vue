@@ -22,5 +22,12 @@ export default [
     txt: '',
     path: {path: '/home/company/community'},
     router: routers.community
+  },{
+    id: 4,
+    title : '测试表格',
+    index: '1-1-4',
+    txt: '',
+    path: {path: '/home/company/test'},
+    router: routers.tester
   }
 ]
