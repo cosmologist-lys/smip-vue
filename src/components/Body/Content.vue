@@ -1,11 +1,46 @@
 <template>
   <div class="body-content">
-    <slot></slot>
+    <KitBreadcrumV :items="breadTitles"></KitBreadcrumV>
+    <InnerContentV :hasBorder="hasBorder">
+      <slot>
+        <h1>home page</h1>
+      </slot>
+    </InnerContentV>
   </div>
 </template>
 <script type="text/ecmascript-6">
+  import InnerContentV from '@/components/Body/InnerContent'
+  import KitBreadcrumV from '@/components/Kits/Breadcrumb'
   export default{
-    name : 'body-content'
+    name : 'body-content',
+    components : {InnerContentV,KitBreadcrumV},
+    props:{
+    	breadTitles:{
+    		type : Array,
+        default : function () {
+          return[
+          {
+            id: 1,
+              text: 'text1',
+            path: `/home`
+          }, {
+            id: 2,
+              text: 'text2',
+            path: `/home`
+          }, {
+            id: 3,
+              text: 'text3',
+            path: `/home`
+          }
+          ]
+        }
+      },
+      hasBorder : {
+    		type : Boolean,
+        default : false
+      }
+    }
+
   }
 </script>
 <style scoped>

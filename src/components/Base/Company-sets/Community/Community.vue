@@ -1,7 +1,5 @@
 <template>
   <ContentV>
-    <KitBreadcrumV :items="items"></KitBreadcrumV>
-    <InnerContentV>
       <div class="top-left-query">
         <el-col :span="7">
           区域筛选&nbsp&nbsp
@@ -93,9 +91,6 @@
         icon="el-icon-close"
         @click="handleDeleteSelected()">删除所选
       </el-button>
-
-
-    </InnerContentV>
   </ContentV>
 </template>
 <script type="text/ecmascript-6">

@@ -1,7 +1,5 @@
 <template>
   <ContentV>
-    <KitBreadcrumV :items="items"></KitBreadcrumV>
-    <InnerContentV :hasBorder="false">
       <el-table
         :border="true"
         height="100%"
@@ -56,7 +54,6 @@
         icon="el-icon-close"
         @click="handleDeleteSelected()">删除所选
       </el-button>
-    </InnerContentV>
   </ContentV>
 </template>
 <script type="text/ecmascript-6">

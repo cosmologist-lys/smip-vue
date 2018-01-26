@@ -1,7 +1,5 @@
 <template>
   <ContentV>
-    <KitBreadcrumV :items="items"></KitBreadcrumV>
-    <InnerContentV :hasBorder="false">
       <div class="company-card-content">
         <el-form ref="companyform" :model="companyform" label-width="100px" labelPosition="left">
           <el-form-item label="公司名称" prop="name">
@@ -25,7 +23,6 @@
           </el-form-item>
         </el-form>
       </div>
-    </InnerContentV>
   </ContentV>
 </template>
 <script type="text/ecmascript-6">

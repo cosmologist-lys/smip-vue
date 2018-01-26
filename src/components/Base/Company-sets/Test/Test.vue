@@ -1,8 +1,6 @@
 <template>
   <ContentV>
-    <InnerContentV :hasBorder="false">
-    <TableV :items="items" :hasMainBtn="true"></TableV>
-    </InnerContentV>
+    <TableV :items="items" :hasMainBtn="true" :hasIndex="true"></TableV>
   </ContentV>
 </template>
 <script type="text/ecmascript-6">

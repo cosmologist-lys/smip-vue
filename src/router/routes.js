@@ -16,12 +16,12 @@ const loginRouter = {
 
 const home_redirect = {
   path: '/',
-  redirect: '/home',
+  redirect: '/v1.0',
   component: Home
 }
 
 const homeRouter = {
-  path: '/home',
+  path: '/v1.0',
   component: Home,
   children: home_children
 };

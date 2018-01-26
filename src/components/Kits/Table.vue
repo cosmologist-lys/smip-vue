@@ -13,6 +13,12 @@
                        width="55">
       </el-table-column>
       <el-table-column
+        v-if="hasIndex"
+        :align="text_align"
+        type="index"
+        width="30">
+      </el-table-column>
+      <el-table-column
         align="center"
         prop="name"
         label="区域名字">
@@ -23,7 +29,7 @@
         label="区域详情">
       </el-table-column>
       <el-table-column
-        label="option1.label"
+        :label="option1.label"
         v-if="hasOption"
         :align="text_align">
         <template slot-scope="scope">
@@ -92,9 +98,13 @@
     		type : Object,
         require : false //测试完之后要改为true
       },
-      hasBorder: {
+      hasBorder: {  //是否有边框
         type: Boolean,
         default: true,
+      },
+      hasIndex:{   //是否有排序列
+    		type : Boolean,
+        default : true
       },
       items: {  //要展示的数据
         type: Array,
