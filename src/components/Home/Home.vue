@@ -1,16 +1,10 @@
 <template>
   <el-container>
-    <el-header height="80px">
-      <HeadV></HeadV>
-    </el-header>
+    <el-header height="80px"><HeadV></HeadV></el-header>
     <el-container>
-      <el-aside>
-        <AsideV></AsideV>
-      </el-aside>
+      <el-aside> <AsideV></AsideV></el-aside>
       <el-container>
-        <el-main>
-            <router-view/>
-        </el-main>
+        <el-main><router-view/></el-main>
         <el-footer>Footer</el-footer>
       </el-container>
     </el-container>
@@ -18,14 +12,13 @@
 
 </template>
 <script type="text/ecmascript-6">
-  import BodyV from '@/components/Body/Body'
   import FootV from '@/components/Footer/Footer'
   import HeadV from '@/components/Header/Header'
   import AsideV from '@/components/Aside/Aside'
   export default{
     name: 'sv-home',
     components: {
-      BodyV, FootV, HeadV, AsideV
+       FootV, HeadV, AsideV
     }
   }
 

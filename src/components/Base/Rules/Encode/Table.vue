@@ -21,12 +21,27 @@
       <el-table-column
         align="center"
         prop="name"
-        label="区域名字">
+        label="规则名称">
       </el-table-column>
       <el-table-column
         align="center"
-        prop="discribe"
-        label="区域详情">
+        prop="type"
+        label="规则类型">
+      </el-table-column>
+      <el-table-column
+        align="center"
+        prop="prefix"
+        label="编码前缀">
+      </el-table-column>
+      <el-table-column
+        align="center"
+        prop="length"
+        label="编码长度">
+      </el-table-column>
+      <el-table-column
+        align="center"
+        prop="max"
+        label="当前最大值">
       </el-table-column>
       <el-table-column
         :label="option1.label"
@@ -91,13 +106,13 @@
   </div>
 </template>
 <script type="text/ecmascript-6">
-  import EditDialog from './EditDialog.vue'
+  import EditDialog from '@/components/Kits/EditDialog'
   export default{
     name: 'sv-table',
     components: {EditDialog},
     props: {
-    	api:{
-    		type : Object,
+      api:{
+        type : Object,
         require : false //测试完之后要改为true
       },
       hasBorder: {  //是否有边框
@@ -105,7 +120,7 @@
         default: true,
       },
       hasIndex:{   //是否有排序列
-    		type : Boolean,
+        type : Boolean,
         default : true
       },
       items: {  //要展示的数据
@@ -304,4 +319,5 @@
     display: flex;
     justify-content: center;
   }
+
 </style>

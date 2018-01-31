@@ -27,12 +27,10 @@
 </template>
 <script type="text/ecmascript-6">
   import ContentV from '@/components/Body/Content'
-  import KitBreadcrumV from '@/components/Kits/Breadcrumb'
-  import InnerContentV from '@/components/Body/InnerContent'
   export default{
     name: 'sv-companycard',
     components: {
-      ContentV, KitBreadcrumV, InnerContentV
+      ContentV
     },
     data(){
       return {

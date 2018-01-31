@@ -13,7 +13,7 @@
 
   export default{
     name: 'test',
-    components: {ContentV, KitBreadcrumV, InnerContentV, TableV,EditDialog},
+    components: {ContentV,TableV,EditDialog},
     data(){
       return {
         items: [],
