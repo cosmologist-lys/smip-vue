@@ -48,6 +48,7 @@
     computed: {
       isErr(){
         let status = this.$store.getters.getLoginStatus;
+        console.log('loginvue:',status)
         if (status && typeof status === 'string') {
           if (status === 'OK') {
             return false
@@ -64,7 +65,6 @@
         loginJs.login({
           username: this.username,
           psw: this.password,
-          _token: ''
         }, commit);
       }
     },

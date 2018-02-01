@@ -18,6 +18,7 @@ export const get = (key) => {
 };
 
 export const clear = (key, commit) => {
+  console.log('into localstorage.clear')
   if (key && typeof key === 'string') {
     if (key === 'sess') {
       //如果是清除sess，则同步更新vuex.action.initsessions,触发全局监听

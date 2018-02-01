@@ -9,7 +9,7 @@ axios.defaults.timeout = 5000;
 
 axios.interceptors.request.use(
   config => {
-    console.log('axios start')
+    //console.log('axios start')
     //todo : this place can do sth before axios
     return config
   },
@@ -20,7 +20,7 @@ axios.interceptors.request.use(
 
 axios.interceptors.response.use(
   response => {
-    console.info('axios end')
+    //console.info('axios end')
     //todo : this place can do sth after axios
     return response
   },
@@ -49,16 +49,31 @@ function checkCode(res) {
 }
 
 export default {
-  post (url, data, token) {
+  /**
+   * 任何一个post请求header都要携带数据
+   * header携带token,auth
+   * @param url 请求地址
+   * @param data post数据体
+   * @param token
+   * @returns {Promise.<TResult>}
+   */
+  post (url, data, header) {
+    let postHeader = {};
+    if (header._token){
+      postHeader = {
+        'X-Requested-With': 'XMLHttpRequest',
+        'Content-Type': 'Content-Type',
+        '_token' : header._token || header.token,
+        '_auth' : header._auth || header.auth
+      }
+    }else{
+      return;
+    }
     return axios({
       method: 'post',
       url,
       data: qs.stringify(data),//post用data传送数据
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-        'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-        '_token': token
-      }
+      headers: postHeader
     }).then(
       response => {
         return checkStatus(response)
@@ -69,17 +84,36 @@ export default {
       }
     )
   },
-  get (url, params, sysuser) {
+  /**
+   * 任何一个get请求header都要携带数据
+   * login时，header携带username,psw,auth
+   * conns时，header携带token,auth
+   * @param url 请求地址
+   * @param params url参数 例：ip:port/find?id=1
+   * @param ask 包含的请求header
+   * @returns {Promise.<TResult>}
+   */
+  get (url, params, ask) {
+    let getHeader = {}
+    if (ask._token){ //有token的时候不是登陆操作
+      getHeader = {
+        'X-Requested-With': 'XMLHttpRequest',
+        '_token' : ask._token,
+        '_auth' : ask._auth
+      }
+    }else{
+      getHeader = {  //无token的时候只能是登陆操作
+        'X-Requested-With': 'XMLHttpRequest',
+        'username': ask.username,
+        'psw': ask.psw,
+        '_auth' : ask._auth
+      }
+    }
     return axios({
       method: 'get',
       url,
       params, // get用params传送url拼接的数据
-      headers: {
-        'X-Requested-With': 'XMLHttpRequest',
-        'username': sysuser.username,
-        'psw': sysuser.psw,
-        '_token': sysuser._token
-      }
+      headers: getHeader
     }).then(
       response => {
         return checkStatus(response)

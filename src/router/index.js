@@ -24,13 +24,12 @@ const router = new VueRouter(route_config);
 const clearSessStore = () => {
   const commit = store.dispatch;
   localStore.clear('sess',commit)
-}
+};
 
 router.beforeEach((to, from, next) => {
-  /*const isLogin = store.getters.getLogin;
+  const isLogin = store.getters.getLogin;
   const status = store.getters.getLoginStatus;
   console.log('islogin=', isLogin, 'status=', status)
-  console.info(to.path)
   if (isLogin && status.toString() === 'OK') {
     if (to.path === '/login'){
       clearSessStore();//登陆信息OK状态时访问/login清除store和localstore
@@ -42,7 +41,7 @@ router.beforeEach((to, from, next) => {
     } else {
       next({path: '/login'})
     }
-  }*/
+  }
   console.log('to',to.path)
   next()
 });
