@@ -1,5 +1,5 @@
 //mudule.session
-export const SET_SESSION_HASH = 'setSesshas';
+export const SET_SESSION_AUTH = 'setSessauth';
 export const SET_SESSION_USER = 'setSessuser';
 export const SET_SESSION_TOKEN = 'setSesstoken';
 export const SET_SESSION_LOGINFLAG = 'setLogin';

@@ -27,9 +27,15 @@ let state = {
   sessuser: {}, //身份
   sesstoken: '', //token
   isLogin: false, //登陆状态
-  loginStatus: '', //登录状态的STRING OK,FORBIDDEN,404
+  loginStatus: '', //登录状态的字符串 OK,FORBIDDEN,404
   remote: {} //smip-mini返回的所有json
 };
+/*let state = new Object({
+  comtick : {
+    type : Number,
+    default : 0
+  }
+});*/
 
 const getters = {
   getSessauth (state){
@@ -55,7 +61,7 @@ const getters = {
 };
 
 const mutations = {
-  [types.SET_SESSION_HASH](state, sessauth, flg = false){
+  [types.SET_SESSION_AUTH](state, sessauth, flg = false){
     if (sesshas && sesshas.length > 0) {
       if (flg)
         state.sessauth = md5.update(sessauth).digest('hex');
@@ -108,7 +114,7 @@ const mutations = {
 
 const actions = {
   setSesshas ({commit}, value){
-    commit(types.SET_SESSION_HASH, value)
+    commit(types.SET_SESSION_AUTH, value)
   },
   setSessuser({commit}, value){
     commit(types.SET_SESSION_USER, value)

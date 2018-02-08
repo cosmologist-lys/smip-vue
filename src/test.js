@@ -1,20 +1,23 @@
-const company = [
-  {
-    id: 1,
-    title: '公司名片',
-    index: '1-1-1',
-    txt: '',
-    path: {path: '/home/company/card'},
-    //router: routers.card
-  },
-  {
-    id: 2,
-    title : '区域划分',
-    index: '1-1-2',
-    txt: '',
-    path: {path: '/home/company/area'},
-    //router: routers.area
-  }
-  ]
+/*let state = {
+  comtick: 0,  //请求次数
+  sessauth: 0,  //加密类型
+  sessuser: {}, //身份
+  sesstoken: '', //token
+  isLogin: false, //登陆状态
+  loginStatus: '', //登录状态的字符串 OK,FORBIDDEN,404
+  remote: {} //smip-mini返回的所有json
+};*/
 
-  console.info( company instanceof Array)
+const state = new Object({
+  comtick : {
+    type : Number,
+    default : 0
+  },
+  auth :{
+    type : String,
+    default : '+_auth'
+  }
+});
+console.log(state)
+const state_copy = new state;
+console.log(state_copy)

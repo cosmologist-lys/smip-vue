@@ -6,7 +6,7 @@ export const login = (user, commit) => {
   const $router = router;
   if (!user.psw && !user.username) return;
   if (user) {
-    http.get(api.LOGIN, null, user)
+    http.get(api.base_api.LOGIN, null, user)
       .then(data => {
         return valid(data, commit, $router);
       });
@@ -46,7 +46,6 @@ export const success = (obj, commit, $router) => {
     },
     remote: obj
   };
-  console.info('loginJs.success:', validUser);
   commit('loginApi', validUser);
   $router.push({path: '/v1.0'}); //登陆成功跳转到主页
 };

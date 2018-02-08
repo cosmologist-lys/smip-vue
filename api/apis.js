@@ -1,10 +1,16 @@
 
-/*export const LOGIN = '/users/login'*/
+import company_api from './company/company-api';
 
-const apis = {
+const base_api = {
   BASEURL : 'http://localhost:3100',
   LOGIN : '/users/login'
 
 };
 
-module.exports = apis
+
+export default  {
+  base_api,
+  company_api
+};
+
+

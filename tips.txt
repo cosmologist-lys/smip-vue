@@ -40,4 +40,22 @@ el-table的用法：
         翻页思路：后台给2个array数组。1个是当前显示的数组（默认第一页），另1个是总array。翻页的时候第一个array重新赋值
 
 
+table封装
+  难度最大的封装。考虑封装table本体，包括可选是否要checkbox，是否要操作栏，是否要按钮，以及各种样式
+  其中包含2个slot，一个是columns，不封装，因为对象属性要显示哪些不好控制。后期看情况封装
+  一个slot是dialog，控制按钮的操作等。
+  footer包含pagination，视情况而定做slot还是直接写在table里。pagination里做http请求，用来刷新table里的数据
+  而且对应的删除等操作都要通过http请求来刷新数据
+  最后还要封装http请求，和数据的更新等等.
+
+  大部分都是用到table来做显示和edit操作。
+
+get.header
+  登陆时：第三个参数传入user对象。
+  登陆成功之后其他get请求时，第三个参数传入true
+  后台会自动根据第三个参数的类型生成header,当第三个参数是true时，代表已经是登陆之后的get请求了，从store里获取token然后组装header
+  当第三个参数是object类型，代表该请求是登陆请求。拿到第三个参数组装成header发送登陆请求。
+  post请求全部不使用uri组合的方式，全部使用json格式进行传输
+
+
 

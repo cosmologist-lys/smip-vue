@@ -27,6 +27,7 @@
 </template>
 <script type="text/ecmascript-6">
   import ContentV from '@/components/Body/Content'
+  import CardJs from './CardJs';
   export default{
     name: 'sv-companycard',
     components: {
@@ -35,6 +36,7 @@
     data(){
       return {
         companyform: {
+        	id:'',
           name: '',
           address: '',
           tel: '',
@@ -63,6 +65,7 @@
     methods: {
       onSubmit() {
         console.log('submit!',this.form);
+        CardJs.post(this.companyform);
       },
       reset(formname){
         this.$refs[formname].resetFields();
@@ -71,7 +74,12 @@
     created(){
       //todo 创建的时候从后台获取数据并且渲染到this.companyform
     },
+    mounted(){
+      CardJs.get().then(card => {
+        this.companyform = card;
+      });
 
+    },
     beforeDestory(){
       //todo 销毁动作
     },
