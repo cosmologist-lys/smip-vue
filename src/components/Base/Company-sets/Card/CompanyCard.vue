@@ -76,7 +76,9 @@
     },
     mounted(){
       CardJs.get().then(card => {
-        this.companyform = card;
+      	if (card){
+          this.companyform = card;
+        }
       });
 
     },

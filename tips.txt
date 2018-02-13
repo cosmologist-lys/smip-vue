@@ -56,6 +56,7 @@ get.header
   后台会自动根据第三个参数的类型生成header,当第三个参数是true时，代表已经是登陆之后的get请求了，从store里获取token然后组装header
   当第三个参数是object类型，代表该请求是登陆请求。拿到第三个参数组装成header发送登陆请求。
   post请求全部不使用uri组合的方式，全部使用json格式进行传输
+  put.delete.post.get4种提交方式。get可携带pathvariable,post传递对象本身，put用于update,save,delete用于删除
 
 
 

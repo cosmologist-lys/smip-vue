@@ -1,7 +1,7 @@
 
-import company_api from './company/company-api';
+import COMPANY from './base/company';
 
-const base_api = {
+const BASE = {
   BASEURL : 'http://localhost:3100',
   LOGIN : '/users/login'
 
@@ -9,8 +9,8 @@ const base_api = {
 
 
 export default  {
-  base_api,
-  company_api
+  BASE,
+  COMPANY
 };
 
 

@@ -1,10 +1,11 @@
 import axios from 'axios';
 import qs from 'qs'
 
+
 import api from './apis'
 import $store from '@/store/entry';
 
-axios.defaults.baseURL = api.base_api.BASEURL || 'http://localhost:3100';
+axios.defaults.baseURL = api.BASE.BASEURL || 'http://localhost:3100';
 axios.defaults.timeout = 5000;
 
 
@@ -18,6 +19,10 @@ axios.interceptors.request.use(
     return Promise.reject(err)
   }
 );
+
+axios.install = (Vue) => {
+  Vue.prototype.$axios = axios
+};
 
 axios.interceptors.response.use(
   response => {
@@ -35,7 +40,7 @@ function checkStatus(response) {
   }
   return {
     status: -404,
-    msg: '网络异常'
+    msg: '网络异常,远程主机未响应'
   }
 }
 
@@ -64,8 +69,7 @@ function packHeader() {
       '_token' : _token,
       '_auth' : 0
     }
-  }
-  return false;
+  }else return false;
 }
 
 

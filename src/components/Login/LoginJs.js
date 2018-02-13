@@ -6,11 +6,11 @@ export const login = (user, commit) => {
   const $router = router;
   if (!user.psw && !user.username) return;
   if (user) {
-    http.get(api.base_api.LOGIN, null, user)
+    http.get(api.BASE.LOGIN, null, user)
       .then(data => {
         return valid(data, commit, $router);
       });
-  }
+  }else return;
 };
 /**
  * 验证登陆成功或失败
@@ -19,7 +19,8 @@ export const login = (user, commit) => {
 export const valid = (info, commit, $router) => {
   if (!info) return false;
   const status = info.status || info.response.httpStatus;
-  const _token = info.keycore ? info.keycore._token || false : false;
+  const _token = info.keycore ?
+    info.keycore._token || false : false;
   if (status === 'OK' && typeof _token === 'string') {
     return success(info, commit, $router);
   } else if (status === 'FORBIDDEN') {
@@ -30,6 +31,7 @@ export const valid = (info, commit, $router) => {
 };
 /**
  * 登陆成功，httpStatus = OK 且存在 token
+ * 存入store并跳转path
  * @param obj
  * @param commit
  * @param $router
@@ -51,9 +53,9 @@ export const success = (obj, commit, $router) => {
 };
 /**
  * 登陆失败，500错误
+ * 刷新store
  * @param obj
  * @param commit
- * @param $router
  */
 export const fail = (obj, commit) => {
   const validUser = {
@@ -72,9 +74,9 @@ export const fail = (obj, commit) => {
 };
 /**
  * 登陆失败，forbidden，验证未通过或权限不够
+ * 刷新store
  * @param obj
  * @param commit
- * @param $router
  */
 export const forbidden = (obj, commit) => {
   const validUser = {
